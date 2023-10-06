@@ -1,33 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import  { useState, useEffect } from 'react';
 import Post from './components/Post';
 
 const Home = (props) => {
-  const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState([]);
 
-  const getLatestPosts = () => {
-    fetch('http://akademia108.pl/api/social-app/post/latest', {
-      method: 'GET'
-    })
-      .then((req) => req.json()) // Parse the response directly to JSON
-      .then((reqData) => {
-        setPosts(reqData);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+    const getLatestPosts = () => {
+        axios
+            .post('http://akademia108.pl/api/social-app/post/latest')
+            .then((reqData) => {
+                console.log(reqData.data)
+                setPosts(reqData.data);
+            })
 
-  useEffect(() => {
-    getLatestPosts();
-  }, []);
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
-  return (
-    <div>
-      {posts.map((post) => (
-        <Post  />
-      ))}
-    </div>
-  );
+    useEffect(() => {
+        getLatestPosts();
+    }, []);
+
+    console.log(posts)
+
+    return (
+        <div>
+            {posts.map((post) => (
+                <Post post={post} />
+            ))}
+        </div>
+    );
 }
 
 export default Home;
