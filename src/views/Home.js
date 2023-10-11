@@ -1,6 +1,6 @@
 import axios from 'axios';
 import  { useState, useEffect } from 'react';
-import Post from './components/Post';
+import Post from '../components/Post';
 
 const Home = (props) => {
     const [posts, setPosts] = useState([]);
