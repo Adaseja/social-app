@@ -29,6 +29,7 @@ const Home = (props) => {
             {posts.map((post) => (
                 <Post post={post} />
             ))}
+           
         </div>
     );
 }
