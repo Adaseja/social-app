@@ -1,13 +1,18 @@
- import './App.css';
+import { useState } from 'react';
+import './App.css';
 import AppNav from './components/AppNav';
 import AppRoutes from './routes/AppRoutes';
+import axios from 'axios';
 
 function App() {
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  axios.defaults.headers.common['Authorization'] = user ? `Bearer ${user.jwt_token}` : "";
   return (
     <div className="App">
-      <AppNav />
-     <AppRoutes />
-    
+      <AppNav user={user} />
+      <AppRoutes user={user} setUser={setUser} />
+
     </div>
   );
 }
