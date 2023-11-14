@@ -20,7 +20,7 @@ const Home = (props) => {
 
     useEffect(() => {
         getLatestPosts();
-    }, []);
+    }, [props.user]);
 
     console.log(posts)
 
