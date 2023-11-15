@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React,  { useState, useEffect } from 'react';
 import Post from '../components/Post';
+import AddPost from '../components/AddPost';
 
 const Home = (props) => {
     const [posts, setPosts] = useState([]);
@@ -18,6 +19,10 @@ const Home = (props) => {
             });
     };
 
+    const getPrevPosts = () => {
+        
+    }
+
     useEffect(() => {
         getLatestPosts();
     }, [props.user]);
@@ -26,6 +31,7 @@ const Home = (props) => {
 
     return (
         <div>
+             <AddPost user={props.user} getPrevPosts={getPrevPosts} />
             {posts.map((post) => (
                 <Post post={post} />
             ))}
