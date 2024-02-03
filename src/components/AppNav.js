@@ -6,9 +6,9 @@ import axios from 'axios';
 
 
 const AppNav = (props) => {
-
-    const handleLogout = (e) => {
+const handleLogout = (e) => {
         e.preventDefault();
+
         axios
             .post('http://akademia108.pl/api/social-app/user/logout')
             .then((res) => {
@@ -16,13 +16,22 @@ const AppNav = (props) => {
 
                 if (res.data.message) {
                     props.setUser(null);
-                    localStorage.setItem('user', null);
+                    localStorage.setItem('user', null)
                 }
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
+
+                })
+               
+                .catch((error) => {
+                    props.setUser(null);
+                       localStorage.setItem('user', null);
+                   console.error(error);
+               });
+
+                
+            };
+            
+    
+
     return (
         <nav className="mainNav">
             <ul>

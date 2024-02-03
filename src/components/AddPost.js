@@ -1,11 +1,13 @@
+import"./AddPost.css";
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const AddPost = ({ user, getPrevPosts }) => {
-  const [postContent, setPostContent] = useState('');
+  
 
-  const addPost = () => {
-    if  {
+  const AddPost = (props) => {
+    const [postContent, setPostContent] = useState('');
+    if () {
       axios
         .post('https://akademia108.pl/api/social-app/post/add', {
           user_id: user.id,
@@ -14,7 +16,7 @@ const AddPost = ({ user, getPrevPosts }) => {
         .then((res) => {
           console.log(res.data);
          
-          getPrevPosts();
+          getPrevPosts(newestPOstDate);
           setPostContent('');
         })
         .catch((error) => {
@@ -24,11 +26,12 @@ const AddPost = ({ user, getPrevPosts }) => {
   };
 
   return (
-    <div >
-      <textarea />
-      <button onClick={addPost}>Add Post</button>
-    </div>
+    <form className='addPostForm'>
+      <textarea placeholder="Add post..." > </ textarea>
+      <button className='btn'>Add</button>
+    </form >
   );
+
 };
 
 export default AddPost;
