@@ -10,7 +10,7 @@ function App() {
   axios.defaults.headers.common['Authorization'] = user ? `Bearer ${user.jwt_token}` : "";
   return (
     <div className="App">
-      <AppNav user={user} />
+      <AppNav user={user} setUser={setUser} />
       <AppRoutes user={user} setUser={setUser} />
 
     </div>

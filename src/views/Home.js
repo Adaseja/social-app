@@ -1,4 +1,5 @@
 import "./Home.css"
+import './App.css'
 import axios from "axios";
 import { useState, useEffect } from "react"
 import Post from "../components/Post";
@@ -23,7 +24,7 @@ const Home = (props) => {
     const getNextPosts = () => {
         axios
             .post("http://akademia108.pl/api/social-app/post/older-then", {
-                date: posts[posts.lenght -1].created_at,
+                date: posts[posts.length -1].created_at,
             })
             .then((res) => {
                 setPosts(posts.concat(res.data));

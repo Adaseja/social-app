@@ -1,8 +1,10 @@
 .postList {
     max-width: 600px;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .loadMore {
     margin: 20px 0;
 }
+
+
